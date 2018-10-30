@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('/comments', 'CommentsController@index');
+Route::get('/comments/user01', 'CommentsController@user01');

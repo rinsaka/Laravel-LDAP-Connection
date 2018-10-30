@@ -51,4 +51,38 @@ class CommentsController extends Controller
     return view('comments.index')
             ->with('comments', $comments);
   }
+
+  public function user01()
+  {
+    $host = 'ldap://192.168.33.110';
+    // $port = 389;
+
+    $dc = 'dc=example,dc=com';
+    $dn = 'uid=testuser01,ou=Users,dc=example,dc=com';
+    $userPass = 'hogehoge.01';
+
+    // $ldapConn = ldap_connect($host, $port);
+    $ldapConn = ldap_connect($host);
+
+    ldap_set_option( $ldapConn, LDAP_OPT_PROTOCOL_VERSION, 3);
+    ldap_set_option( $ldapConn, LDAP_OPT_REFERRALS, 0);
+
+    if ($ldapConn) {
+      var_dump("接続できました");
+
+      $bind = ldap_bind($ldapConn, $dn, $userPass);
+
+      if ($bind) {
+        var_dump('ログイン成功');
+      } else {
+        var_dump('ログイン失敗');
+      }
+
+    } else {
+      var_dump("接続失敗");
+    }
+
+    ldap_close($ldapConn);
+
+  }
 }

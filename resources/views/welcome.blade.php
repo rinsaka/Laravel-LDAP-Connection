@@ -75,6 +75,7 @@
 
                 <div class="links">
                   <a href="{{ action('CommentsController@index') }}">Comments</a>
+                  <a href="{{ action('CommentsController@user01') }}">User01</a>
                 </div>
             </div>
         </div>
