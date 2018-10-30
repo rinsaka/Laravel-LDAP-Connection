@@ -59,7 +59,7 @@ class CommentsController extends Controller
 
     $dc = 'dc=example,dc=com';
     $dn = 'uid=testuser01,ou=Users,dc=example,dc=com';
-    $userPass = 'hogehoge.01';
+    $userPass = 'hogehoge.0s1';
 
     // $ldapConn = ldap_connect($host, $port);
     $ldapConn = ldap_connect($host);
@@ -70,7 +70,9 @@ class CommentsController extends Controller
     if ($ldapConn) {
       var_dump("接続できました");
 
-      $bind = ldap_bind($ldapConn, $dn, $userPass);
+      // http://php-japan.10936.n7.nabble.com/PHP-users-29618-LDAP-Warning-td3740.html
+      // @ を付けたらエラーが表示されなくなる
+      $bind = @ldap_bind($ldapConn, $dn, $userPass);
 
       if ($bind) {
         var_dump('ログイン成功');
