@@ -59,7 +59,7 @@ class CommentsController extends Controller
 
     $dc = 'dc=example,dc=com';
     $dn = 'uid=testuser01,ou=Users,dc=example,dc=com';
-    $userPass = 'hogehoge.0s1';
+    $userPass = 'hogehoge.01';
 
     // $ldapConn = ldap_connect($host, $port);
     $ldapConn = ldap_connect($host);
@@ -79,6 +79,8 @@ class CommentsController extends Controller
       } else {
         var_dump('ログイン失敗');
       }
+
+
 
     } else {
       var_dump("接続失敗");
