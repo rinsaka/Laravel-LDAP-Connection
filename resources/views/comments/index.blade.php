@@ -70,11 +70,15 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel LDAP Connection
+                    Laravel<br>LDAP Connection
                 </div>
 
                 <div class="links">
-                  <a href="{{ action('CommentsController@index') }}">Comments</a>
+                  <ul>
+                    @foreach($comments as $comment)
+                      <li>{{ $comment->title }}</li>
+                    @endforeach
+                  </ul>
                 </div>
             </div>
         </div>
